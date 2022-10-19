@@ -17,7 +17,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.6.0",
-    "nuxt": "npm:nuxt3@latest",
+    "nuxt": "^3.0.0-rc.12",
     "nuxt-icon": "^0.1.6",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",

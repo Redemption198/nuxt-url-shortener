@@ -23,18 +23,20 @@ return sendError(event, createError({ statusCode: 403 }));
 
   // ---
 
-  const { id } = await useBody(event);
+  const { id: urlId, active } = await useBody(event);
 
-  if (!id)
-    return sendError(
-      event,
-      createError({ statusCode: 400, message: "No url id specified" })
-    );
+  if (!urlId || active === undefined || active === null)
+    return sendError(event, createError({ statusCode: 400 }));
 
   const prisma = new PrismaClient();
 
-  await prisma.uRL.delete({
-    where: { id },
+  await prisma.uRL.update({
+    where: {
+      id: urlId,
+    },
+    data: {
+      active,
+    },
   });
 
   return event.res.end();

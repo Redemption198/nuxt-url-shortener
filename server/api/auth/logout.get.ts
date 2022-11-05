@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
 
 export default defineEventHandler(async (event) => {
@@ -18,24 +17,16 @@ export default defineEventHandler(async (event) => {
 
   const decoded = jwt.verify(cookies.jwt, process.env.JWT_SECRET);
 
-  if (!decoded) 
-return sendError(event, createError({ statusCode: 403 }));
+  if (!decoded)
+    return sendError(
+      event,
+      createError({ statusCode: 400, message: "Invalid token" })
+    );
 
   // ---
 
-  const { id } = await useBody(event);
-
-  if (!id)
-    return sendError(
-      event,
-      createError({ statusCode: 400, message: "No url id specified" })
-    );
-
-  const prisma = new PrismaClient();
-
-  await prisma.uRL.delete({
-    where: { id },
-  });
+  deleteCookie(event, "jwt");
+  deleteCookie(event, "jwtRefresh");
 
   return event.res.end();
 });

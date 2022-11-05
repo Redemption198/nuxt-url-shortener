@@ -2,7 +2,8 @@
 CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "email" TEXT NOT NULL,
-    "name" TEXT
+    "name" TEXT,
+    "password" TEXT NOT NULL
 );
 
 -- CreateTable
@@ -11,6 +12,7 @@ CREATE TABLE "URL" (
     "originalURL" TEXT NOT NULL,
     "shortenURL" TEXT NOT NULL,
     "active" BOOLEAN NOT NULL DEFAULT true,
+    "visits" INTEGER NOT NULL DEFAULT 0,
     "userId" INTEGER NOT NULL,
     CONSTRAINT "URL_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

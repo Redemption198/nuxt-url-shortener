@@ -18,6 +18,8 @@ model User {
 
   name String?
 
+  password String
+
   urls URL[]
 
 }
@@ -26,11 +28,13 @@ model URL {
 
   id Int @id @default(autoincrement())
 
-  originalURL  String @unique
+  originalURL  String
 
   shortenURL String @unique
 
   active Boolean @default(true)
+
+  visits Int @default(0)
 
   createdBy User @relation(fields: [userId], references: [id])
 

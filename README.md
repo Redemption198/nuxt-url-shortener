@@ -39,8 +39,11 @@ export default defineNuxtConfig({
         },
     },
 });
-
 ```
+## Securing the app
+
+This app uses the (Nuxt Security)[https://github.com/Baroshem/nuxt-security] module with its default values.
+The module documentation is available (here)[https://nuxt-security.vercel.app/].
 
 ## Development Server
 

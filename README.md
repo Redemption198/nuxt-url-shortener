@@ -20,7 +20,7 @@ pnpm install --shamefully-hoist
 ## Environment variables
 
 ```
-// .env
+.env
 
 DATABASE_URL="file:./db/dev.db"
 JWT_SECRET=<your_secret_key>
@@ -28,9 +28,9 @@ JWT_SECRET=<your_secret_key>
 
 ## Setting up Prisma
 
-Prisma config is available inside `prisma/schema.prisma`. Prisma docs available (here)[https://www.prisma.io/docs/].
+Prisma config is available inside `prisma/schema.prisma`. Prisma docs available [here](https://www.prisma.io/docs/).
 
-Initialize the database with Prisma by running `npx prisma migrate dev --name init`
+Initialize the database with Prisma by running `npx prisma migrate dev --name init`.
 
 ## Changing the domain
 
@@ -48,8 +48,8 @@ export default defineNuxtConfig({
 ```
 ## Securing the app
 
-This app uses the (Nuxt Security)[https://github.com/Baroshem/nuxt-security] module with its default values.
-Module documentation is available (here)[https://nuxt-security.vercel.app/].
+This app uses the [Nuxt Security](https://github.com/Baroshem/nuxt-security) module with its default values.
+Module documentation is available [here](https://nuxt-security.vercel.app/).
 
 ## Development Server
 

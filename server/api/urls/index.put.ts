@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import { prisma } from "~~/prisma/db";
 
 export default defineEventHandler(async (event) => {
   /**
@@ -27,8 +27,6 @@ return sendError(event, createError({ statusCode: 403 }));
 
   if (!urlId || active === undefined || active === null)
     return sendError(event, createError({ statusCode: 400 }));
-
-  const prisma = new PrismaClient();
 
   await prisma.uRL.update({
     where: {

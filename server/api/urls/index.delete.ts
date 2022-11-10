@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
+import { prisma } from "~~/prisma/db";
 
 export default defineEventHandler(async (event) => {
   /**
@@ -30,8 +30,6 @@ return sendError(event, createError({ statusCode: 403 }));
       event,
       createError({ statusCode: 400, message: "No url id specified" })
     );
-
-  const prisma = new PrismaClient();
 
   await prisma.uRL.delete({
     where: { id },

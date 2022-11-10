@@ -1,14 +1,12 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { prisma } from "~~/prisma/db";
 
 export default defineEventHandler(async (event) => {
   const { email, password } = await useBody(event);
 
   if (!email || !password)
     return sendError(event, createError({ statusCode: 400 }));
-
-  const prisma = new PrismaClient();
 
   const user = await prisma.user.findUnique({
     where: {

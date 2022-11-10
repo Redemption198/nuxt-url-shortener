@@ -6,6 +6,8 @@ defineProps<{
 }>();
 
 defineEmits(["deleteUrl", "toggleUrlActive"]);
+
+const { domain } = useRuntimeConfig().public;
 </script>
 
 <template>
@@ -49,22 +51,22 @@ defineEmits(["deleteUrl", "toggleUrlActive"]);
         <p class="flex flex-col p-2.5 text-xs text-neutral-500">
           Shorten URL
           <a
-            :href="`http://localhost:3000/${url.shortenURL}`"
+            :href="`${domain}${url.shortenURL}`"
             class="text-sm text-neutral-600 underline underline-offset-2"
-            >{{ `http://localhost:3000/${url.shortenURL}` }}</a
+            >{{ `${domain}${url.shortenURL}` }}</a
           >
         </p>
       </div>
 
       <div class="my-2 mt-auto grid grid-cols-2 place-items-center">
         <button
-          class="rounded-lg p-2.5 text-sm font-bold text-red-300"
+          class="rounded-lg p-2.5 text-sm font-bold text-red-500"
           @click="$emit('toggleUrlActive', { id: url.id, active: !url.active })"
         >
           {{ url.active ? "Deactivate" : "Activate" }}
         </button>
         <button
-          class="rounded-lg p-2.5 text-sm font-bold text-red-300"
+          class="rounded-lg p-2.5 text-sm font-bold text-red-500"
           @click="$emit('deleteUrl', url.id)"
         >
           DELETE

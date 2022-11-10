@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import cuid from "cuid";
 import jwt from "jsonwebtoken";
+import { prisma } from "~~/prisma/db";
 
 function isUrl(url: string): boolean {
   try {
@@ -38,8 +38,6 @@ return sendError(event, createError({ statusCode: 403 }));
 
   if (!isUrl(url)) return sendError(event, createError({ statusCode: 400 }));
 
-  const prisma = new PrismaClient();
-
   const newURL = await prisma.uRL.create({
     data: {
       originalURL: url,
@@ -48,7 +46,7 @@ return sendError(event, createError({ statusCode: 403 }));
     },
   });
 
-  console.log(newURL);
+  const { domain } = useRuntimeConfig().public;
 
-  return `http://localhost:3000/${newURL.shortenURL}`;
+  return `${domain}${url.shortenURL}`;
 });

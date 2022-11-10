@@ -48,7 +48,7 @@ async function deleteUrl(id) {
 }
 
 async function toggleUrlActive({ id, active }) {
-  const response = await $fetch("/api/urls", {
+  await $fetch("/api/urls", {
     body: {
       id,
       active,
@@ -65,7 +65,7 @@ async function toggleUrlActive({ id, active }) {
 }
 
 async function login({ emailInput, passwordInput }) {
-  const response = await $fetch("/api/auth/login", {
+  await $fetch("/api/auth/login", {
     body: {
       email: emailInput,
       password: passwordInput,
@@ -76,7 +76,7 @@ async function login({ emailInput, passwordInput }) {
   refreshUrls();
 }
 async function logout() {
-  const response = await $fetch("/api/auth/logout");
+  await $fetch("/api/auth/logout");
 
   refreshUrls();
 }
@@ -86,7 +86,13 @@ async function logout() {
   <div
     class="flex min-h-screen w-screen flex-col items-center justify-center gap-y-8"
   >
-    <button v-if="generatedUrls && !error" @click="logout">Logout</button>
+    <button
+      v-if="generatedUrls && !error"
+      class="rounded-lg bg-sky-50 p-2 font-bold text-sky-400 transition-transform duration-200 hover:scale-95"
+      @click="logout"
+    >
+      Logout
+    </button>
 
     <LoginForm v-if="!generatedUrls && error" @login="login" />
 

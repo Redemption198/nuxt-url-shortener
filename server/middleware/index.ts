@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "~~/prisma/db";
 
 export default defineEventHandler(async (event) => {
   if (event.req.url === "/" || event.req.url === "/test") {
     return;
   }
-
-  const prisma = new PrismaClient();
 
   const shortenURL = event.req.url.replace("/", "");
 

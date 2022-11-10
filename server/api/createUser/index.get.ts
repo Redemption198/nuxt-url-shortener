@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import { prisma } from "~~/prisma/db";
 
 export default defineEventHandler(async (event) => {
-  const prisma = new PrismaClient();
-
   const password = "1234";
 
   bcrypt.hash(password, 10, async (error, hash) => {
@@ -16,7 +14,6 @@ export default defineEventHandler(async (event) => {
         password: hash,
       },
     });
-    console.log(user);
   });
 
   return event.res.end();

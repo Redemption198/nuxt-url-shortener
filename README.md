@@ -19,9 +19,9 @@ pnpm install --shamefully-hoist
 
 ## Environment variables
 
-```
-.env
+Create and `.env` file and setup the following variables:
 
+```
 DATABASE_URL="file:./db/dev.db"
 JWT_SECRET=<your_secret_key>
 ```

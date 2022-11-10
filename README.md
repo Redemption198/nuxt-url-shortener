@@ -19,7 +19,7 @@ pnpm install --shamefully-hoist
 
 ## Environment variables
 
-Create and `.env` file and setup the following variables:
+Create an `.env` file and setup the following variables:
 
 ```
 DATABASE_URL="file:./db/dev.db"

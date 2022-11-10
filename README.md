@@ -26,6 +26,12 @@ DATABASE_URL="file:./db/dev.db"
 JWT_SECRET=<your_secret_key>
 ```
 
+## Setting up Prisma
+
+Prisma config is available inside `prisma/schema.prisma`. Prisma docs available (here)[https://www.prisma.io/docs/].
+
+Initialize the database with Prisma by running `npx prisma migrate dev --name init`
+
 ## Changing the domain
 
 The domain can be changed inside `nuxt.config.ts` by editing:
@@ -35,7 +41,7 @@ The domain can be changed inside `nuxt.config.ts` by editing:
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-        domain: "http://localhost:3000/",
+            domain: "http://localhost:3000/",
         },
     },
 });
